@@ -138,7 +138,7 @@ Route::get('getToken', function(\Illuminate\Http\Request $request){
     $key = $request->get('key');
     if($key == md5(env('APP_KEY'))) {
         $user = \App\User::where('id', env('TEST_USER_ID'))->first();
-        $token = $user->createToken("http://laravel.54.com:5000")->accessToken;
+        $token = $user->createToken("http://share_printer.com:5000")->accessToken;
         $data = [
             'status' => 200,
             'token' => $token

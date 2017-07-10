@@ -22,7 +22,7 @@ Vue.component(
     require('../components/passport/PersonalAccessTokens.vue')
 );
 
-var backurl = "http://laravel.54.com:5000"
+var backurl = "http://share_printer.com:5000"
 //
 
 const app = new window.Vue({
