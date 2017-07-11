@@ -71,8 +71,8 @@ Route::get('refreshToken', function(){
         'form_params' => [
             'grant_type' => 'refresh_token',
             'refresh_token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijg3MGI3ZWQ5ZWE3NGE2MWM0ODhhZDBiYzRkZjQzMGM0MTc0YWY4OTcxNGJlMjY5MzA3NDFmYjIwNTFiMzdhYTRiM2FhMDRiNDNiYjJlMzgzIn0.eyJhdWQiOiIzIiwianRpIjoiODcwYjdlZDllYTc0YTYxYzQ4OGFkMGJjNGRmNDMwYzQxNzRhZjg5NzE0YmUyNjkzMDc0MWZiMjA1MWIzN2FhNGIzYWEwNGI0M2JiMmUzODMiLCJpYXQiOjE0OTYwNjg3NzksIm5iZiI6MTQ5NjA2ODc3OSwiZXhwIjoxNTI3NjA0Nzc5LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.xekXM8nvvDn0cnsEOgNOBIsSXJtY_0o2DLHHfNRBbMQ7wvKRXw-qyCvEarnwBQNKAO_36tRSuIKGRUAtTbdP5cr2fef7-72MK1ktNZ_xUMkr8sWClpL-aacjjHk0TG3ao6EVDjbZr07UshOXmmEoUX8PAGfKH_uAL7PDGTXdRJ68hOpVzFuA1Ke7p3BCjEpIqHf3h80C3VooCGiIZdMrQI8c3AxsaSAhICcKTN6CbrZIZnT6sgwr1-OXVFU1WqmjMWR3FqzQY41YS_JzoDyKeDveJOzowUPxD2d8_nJfN8tAi2ntKlARVyQCeiLkpkl3o3kHR6ej8eWF4P4fNzI3wCFTJ3SghP0kczF7-N1MkJjXyjJZh4U1_-UXsHFVXn3fvXixDBIygILFamAVwHUOCc3BVIIERdv81eUxWQXjyPHU0WeHTvjuCGU7O8jjf6sYw9KlSFy-6aiK8-U5iHCx9Wl8fMKOT2qHcwxnr5heGCu886tUOLNGokjkBIqq6inoZQnStiX3jDze7GVdiXP7a6cPTnxr0odBG9JVx9GP5tFEjj58mB5aSYF_uTWZwEVrKJ-iVEQ0930dFp7ofk4_9bnSnTWxqBu5iQ4dk98wlfmlWFTyhzFIqf9CMLXdRJ19YselryCzH3mD_EfCHBMfrXWGytDTbNB97N1ZzfmUXl4',
-            'client_id' => 5,
-            'client_secret' => 'nnAzR3Is4IsQTrSmn6Yk78uKDgiGjWQ0wQ8bGJDG',
+            'client_id' => 2,
+            'client_secret' => 'lGCoiDjzZT3Ly4nOfvXZskerr4iEYsoq46LUrwf1',
             'scope' => ''
         ]
     ]);
@@ -91,8 +91,8 @@ Route::get('passwordToken', function(Request $request){
     $response = $http->post( $domain.'/oauth/token', [
         'form_params' => [
             'grant_type' => 'password',
-            'client_id' => '5',
-            'client_secret' => 'nnAzR3Is4IsQTrSmn6Yk78uKDgiGjWQ0wQ8bGJDG',
+            'client_id' => '2',
+            'client_secret' => 'lGCoiDjzZT3Ly4nOfvXZskerr4iEYsoq46LUrwf1',
             'username' => $user->email,
             'password' => '321321',
             'scope' => '',

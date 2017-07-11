@@ -74,10 +74,10 @@ class ArticleController extends Controller
                 $data = [];
                 $data['title'] = $request->get('title');
                 $data['thumb'] = $request->get('thumb','');
-                $data['author'] = $request->get('author');
+                $data['author'] = $request->get('author', '');
                 $data['user_id'] = \Auth::guard('api')->id() ;
                 $data['from_host'] = $request->get('from_host', '');
-                $data['type_id'] = $request->get('type_id');
+                $data['type_id'] = $request->get('type_id', 1);
                 $data['contents'] = $request->get('contents');
                 $data['tags'] = $request->get('tags');
 
