@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\Rules\In;
 
-class ImageController extends BaseApiController
+class UploadController extends BaseApiController
 {
 
     public function upload(Request $request){
