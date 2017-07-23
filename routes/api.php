@@ -27,7 +27,7 @@ Route::group( $groupConfig, function(){
     Route::resource('articles', 'Api\ArticleController');
     Route::resource('article-types', 'Api\ArticleTypeController');
 
-    Route::post('upload_image', 'Api\ImageController@upload')->name('upload_image');
+    Route::post('upload_image', 'Api\UploadController@upload')->name('upload_image');
 });
 
 Route::resource('documents', 'Api\DocumentController');
