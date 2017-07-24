@@ -9,15 +9,29 @@ use Mockery\Exception;
 
 class DocumentController extends BaseApiController
 {
+
+    protected $model;
+
+    public function __construct()
+    {
+        $this->model = new DocumentModel();
+    }
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
         echo 'index';
+        $data = $request->all();
+        $rs = $this->model->create($data);
+        print_r($data);
+        var_dump($rs);
+        var_dump($this->model->message);
     }
 
     /**

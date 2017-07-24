@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DocumentModel extends BaseModel
+class DocumentModel extends BaseModel implements ModelBean
 {
     //
 
@@ -33,4 +33,8 @@ class DocumentModel extends BaseModel
         return $result;
     }
 
+    public function edit($data)
+    {
+        // TODO: Implement edit() method.
+    }
 }
