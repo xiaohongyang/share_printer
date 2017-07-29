@@ -111,8 +111,8 @@ Route::get('passwordToken', function(\Illuminate\Http\Request $request){
             $response = $http->post($domain . '/oauth/token', [
                 'form_params' => [
                     'grant_type' => 'password',
-                    'client_id' => '4',
-                    'client_secret' => 'bN4d6nIPaZbKhEqEYV8EY7q58na9wrQeIj1s8R6u',
+                    'client_id' => '2',
+                    'client_secret' => 'lGCoiDjzZT3Ly4nOfvXZskerr4iEYsoq46LUrwf1',
                     'username' => $user->email,
                     'password' => $request->get('password'),
                     'scope' => '',
