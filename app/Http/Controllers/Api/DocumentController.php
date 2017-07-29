@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Service\DocumentUploadService;
 use App\Models\DocumentModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -26,12 +27,16 @@ class DocumentController extends BaseApiController
     public function index(Request $request)
     {
         //
-        echo 'index';
-        $data = $request->all();
-        $rs = $this->model->create($data);
-        print_r($data);
+        $documentName = $request->get('document_name');
+        $fileFullName = $request->get('file_full_name');
+        $fileSize = $request->get('file_size');
+        $uploadService = new DocumentUploadService();
+        $userId = \Auth::guard('api')->id();
+        $rs = $uploadService->create($documentName, $fileFullName, $fileSize, $userId);
         var_dump($rs);
+        var_dump($uploadService->getMessage());
         var_dump($this->model->message);
+        exit;
     }
 
     /**

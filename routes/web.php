@@ -80,26 +80,53 @@ Route::get('refreshToken', function(){
     return json_decode( (string)$response->getBody() , true);
 });
 
-Route::get('passwordToken', function(Request $request){
+Route::get('passwordToken', function(\Illuminate\Http\Request $request){
 
-    $user = \App\User::where('email', 'JackXiao@qq.com')->first();
-    // echo $user->email;exit;
-    $http = new GuzzleHttp\Client();
+    $result = [
+        'status' => 0,
+        'message' => '获取失败',
+        'data' => []
+    ];
 
-    $domain = env('APP_URL');
-    $domain = str_replace(':5000','', $domain);
-    $response = $http->post( $domain.'/oauth/token', [
-        'form_params' => [
-            'grant_type' => 'password',
-            'client_id' => '2',
-            'client_secret' => 'lGCoiDjzZT3Ly4nOfvXZskerr4iEYsoq46LUrwf1',
-            'username' => $user->email,
-            'password' => '321321',
-            'scope' => '',
-        ],
+    $email = $request->get('email');
+    $password = $request->get('password');
+
+    $validator = \Validator::make($request->all(), [
+        'email' => ['required'],
+        'password' => ['required']
     ]);
+    if($validator->fails()) {
+        $result['message'] = $validator->messages()->getMessageBag();
+    } else {
+        $user = \App\User::where('email', $request->get('email'))->first();
 
-    return json_decode( (string)$response->getBody(), true );
+
+        // echo $user->email;exit;
+        $http = new GuzzleHttp\Client();
+
+        $domain = env('APP_URL');
+        $domain = str_replace(':5000','', $domain);
+
+        try {
+            $response = $http->post($domain . '/oauth/token', [
+                'form_params' => [
+                    'grant_type' => 'password',
+                    'client_id' => '4',
+                    'client_secret' => 'bN4d6nIPaZbKhEqEYV8EY7q58na9wrQeIj1s8R6u',
+                    'username' => $user->email,
+                    'password' => $request->get('password'),
+                    'scope' => '',
+                ],
+            ]);
+            $result['status'] = 1;
+            $result['data'] = json_decode( (string)$response->getBody(), true );
+        } catch (Exception $e) {
+            $result['data'] = "";
+            $result['message'] = "email或密码错误";
+        }
+    }
+
+    return $result;
 });
 
 Route::get('implicitGrantToken', function(){
