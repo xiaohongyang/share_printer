@@ -16,21 +16,15 @@ class DocumentModel extends BaseModel implements ModelBean
 
     public function create($data){
 
-        $result = false;
         $validator = \Validator::make($data, [
-            'name' => ['required'],
+            'team_id' => ['required'],
             'file_name' => ['required'],
             'file_ext' => ['required'],
             'file_size' => ['required'],
             'user_id' => ['required'],
         ]);
-        if ($validator->fails()) {
-            $this->message = $validator->messages()->getMessageBag();
-        } else {
-            $this->fill($data);
-            $result = $this->save() ? $this->id : false;
-        }
-        return $result;
+        $this->setCreateValidator($validator);
+        return parent::create($data);
     }
 
     public function edit($data)

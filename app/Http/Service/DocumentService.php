@@ -12,7 +12,7 @@ use App\Http\Helpers\FileHelper;
 use App\Models\DocumentModel;
 use Illuminate\Http\FileHelpers;
 
-class DocumentUploadService extends BaseService {
+class DocumentService extends BaseService {
 
     protected $documentModel;
 
@@ -32,7 +32,7 @@ class DocumentUploadService extends BaseService {
     'file_size' => ['required'],
     'user_id' => ['required'],
     */
-    public function create($documentName, $fileFullName, $fileSize=null, $userId=null){
+    public function create($teamID, $fileFullName, $fileSize=null, $userId=null){
 
         
 
@@ -40,7 +40,7 @@ class DocumentUploadService extends BaseService {
         $fileExt = FileHelper::getFileExt($fileFullName);
 
         $data = [
-            'name' => $documentName,
+            'team_id' => $teamID,
             'file_name' => $fileName,
             'file_ext' => $fileExt,
             'file_size' => $fileSize,

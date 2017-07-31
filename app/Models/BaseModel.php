@@ -15,4 +15,37 @@ class BaseModel extends Model
 {
 
     public $message ;
+
+    public $createValidator=null;
+
+    /**
+     * @return null
+     */
+    public function getCreateValidator()
+    {
+        return $this->createValidator;
+    }
+
+    /**
+     * @param null $createValidator
+     */
+    public function setCreateValidator($createValidator)
+    {
+        $this->createValidator = $createValidator;
+    }
+
+
+
+    public function create($data){
+
+        $result = false;
+        $validator = $this->getCreateValidator();
+        if ($validator->fails()) {
+            $this->message = $validator->messages()->getMessageBag();
+        } else {
+            $this->fill($data);
+            $result = $this->save() ? $this->id : false;
+        }
+        return $result;
+    }
 }

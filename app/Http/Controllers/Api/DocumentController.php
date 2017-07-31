@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Service\DocumentUploadService;
+use App\Http\Service\DocumentService;
+use App\Http\Service\DocumentTeamService;
 use App\Models\DocumentModel;
+use App\Models\DocumentTeamModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mockery\Exception;
@@ -21,20 +23,20 @@ class DocumentController extends BaseApiController
 
     /**
      * Display a listing of the resource.
-     *
+     * file_info = [{"file_size":"2M","file_name":"321321"},{"file_size":"2M","file_name":"cc"}]
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         //
         $documentName = $request->get('document_name');
-        $fileFullName = $request->get('file_full_name');
-        $fileSize = $request->get('file_size');
-        $uploadService = new DocumentUploadService();
+        $fileInfo = $request->get('file_info');
+        $teamService = new DocumentTeamService();
         $userId = \Auth::guard('api')->id();
-        $rs = $uploadService->create($documentName, $fileFullName, $fileSize, $userId);
+        $fileInfo = json_decode($fileInfo, JSON_UNESCAPED_UNICODE);
+        $rs = $teamService->create($documentName, $fileInfo, $userId);
         var_dump($rs);
-        var_dump($uploadService->getMessage());
+        var_dump($teamService->getMessage());
         var_dump($this->model->message);
         exit;
     }
