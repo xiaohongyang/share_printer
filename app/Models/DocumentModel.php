@@ -11,7 +11,7 @@ class DocumentModel extends BaseModel implements ModelBean
     protected $table = 'document';
 
     protected $fillable = [
-        'id','name','file_name','file_ext','file_size','user_id','created_at','updated_at'
+        'id','team_id', 'name','file_name','file_ext','file_size','user_id','created_at','updated_at'
     ];
 
     public function create($data){
