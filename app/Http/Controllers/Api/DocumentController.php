@@ -63,20 +63,28 @@ class DocumentController extends BaseApiController
     {
         //
 
-        $request->merge(['user_id' => \Auth::guard('api')->id()]);
-        $data = $request->all();
-        try{
-            $rs = $model->create($data);
-            if(!$rs){
-                $this->setJsonResult(null, $model->message);
-            } else {
-                $this->setJsonResult(null, null, $model->id);
-            }
-        } catch (Exception $e){
-            $this->setJsonResult(null, "出现异常,请与管理员联系");
-        }
+        $documentName = $request->get('document_name');
+        $fileInfo = $request->get('file_info');
+        $teamService = new DocumentTeamService();
+        $userId = \Auth::guard('api')->id();
+        $fileInfo = json_decode($fileInfo, JSON_UNESCAPED_UNICODE);
+        $rs = $teamService->create($documentName, $fileInfo, $userId);
 
-        return $this->getJsonResult();
+        echo $rs;exit;
+//        $request->merge(['user_id' => \Auth::guard('api')->id()]);
+//        $data = $request->all();
+//        try{
+//            $rs = $model->create($data);
+//            if(!$rs){
+//                $this->setJsonResult(null, $model->message);
+//            } else {
+//                $this->setJsonResult(null, null, $model->id);
+//            }
+//        } catch (Exception $e){
+//            $this->setJsonResult(null, "出现异常,请与管理员联系");
+//        }
+//
+//        return $this->getJsonResult();
     }
 
     /**

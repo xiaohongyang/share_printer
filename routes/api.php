@@ -31,6 +31,7 @@ Route::group( $groupConfig, function(){
 });
 
 Route::resource('documents', 'Api\DocumentController');
+Route::resource('print_order', 'Api\PrintOrderController');
 
 
 

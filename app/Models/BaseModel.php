@@ -35,9 +35,9 @@ class BaseModel extends Model
     }
 
 
-
     public function create($data){
 
+        \DB::beginTransaction();
         $result = false;
         $validator = $this->getCreateValidator();
         if ($validator->fails()) {
@@ -46,6 +46,11 @@ class BaseModel extends Model
             $this->fill($data);
             $result = $this->save() ? $this->id : false;
         }
+
         return $result;
+    }
+
+    public static function getByID($id, $column = 'id') {
+        return static::where($column, $id)->first();
     }
 }

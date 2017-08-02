@@ -13,6 +13,7 @@ class DocumentTeamModel extends BaseModel
         'name', 'user_id'
     ];
 
+
     /**
      * 保存到文档组表
      * @param array $data

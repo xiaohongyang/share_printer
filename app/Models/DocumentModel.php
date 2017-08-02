@@ -10,6 +10,9 @@ class DocumentModel extends BaseModel implements ModelBean
 
     protected $table = 'document';
 
+    private $amount;
+
+
     protected $fillable = [
         'id','team_id', 'name','file_name','file_ext','file_size','user_id','created_at','updated_at'
     ];
@@ -30,5 +33,22 @@ class DocumentModel extends BaseModel implements ModelBean
     public function edit($data)
     {
         // TODO: Implement edit() method.
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    /**
+     * @param mixed $amount
+     */
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
     }
 }
