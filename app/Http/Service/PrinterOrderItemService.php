@@ -3,7 +3,7 @@ namespace App\Http\Service;
 use App\Models\DocumentModel;
 use App\Models\DocumentTeamModel;
 use App\Models\PrintOrderItemModel;
-use App\Models\PrintOrderModel;
+use App\Models\PrinterOrderModel;
 
 /**
  * Created by PhpStorm.
@@ -11,7 +11,7 @@ use App\Models\PrintOrderModel;
  * Date: 2017/8/1
  * Time: 21:23
  */
-class DocumentPrintItemService extends BaseService
+class PrinterOrderItemService extends BaseService
 {
 
     private $printItemModel;
@@ -21,7 +21,7 @@ class DocumentPrintItemService extends BaseService
         $this->printItemModel = new PrintOrderItemModel();
     }
 
-    public function create(PrintOrderModel $orderModel ,$documentModelList ) {
+    public function create(PrinterOrderModel $orderModel , $documentModelList ) {
 
         $result = false;
         if(is_array($documentModelList) && count($documentModelList)) {

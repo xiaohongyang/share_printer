@@ -37,14 +37,13 @@ class BaseModel extends Model
 
     public function create($data){
 
-        \DB::beginTransaction();
         $result = false;
         $validator = $this->getCreateValidator();
         if ($validator->fails()) {
             $this->message = $validator->messages()->getMessageBag();
         } else {
             $this->fill($data);
-            $result = $this->save() ? $this->id : false;
+            $result = $this->save() ? true : false;
         }
 
         return $result;
