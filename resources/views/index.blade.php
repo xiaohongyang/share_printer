@@ -7,25 +7,21 @@ use Illuminate\Support\Facades\URL;
 
 @section('content')
 
-    <div id="layout-content">
-        <example></example>
-        <passport-clients></passport-clients>
-        <passport-authorized-clients></passport-authorized-clients>
-        <passport-personal-access-tokens></passport-personal-access-tokens>
+   <div class="container">
+      <div class="row table-bordered">
+         <div class="col-xs-4" style=" ;">
+            春节第一套教程
+         </div>
+         <div class="col-xs-4" style=" ">
+            分享人: 李云龙
+         </div>
 
+         <div class="col-xs-4" style=" ">
+            2017-05-06
+         </div>
 
-
-        clientId : <input type="text" v-model="clientId" /> <br/>
-        clientName : <input type="text" v-model="clientName" /> <br/>
-        clientRedirect : <input type="text" v-model="clientRedirect" /> <br/>
-
-        <textarea v-modelo="clientResponse"></textarea>
-
-        <button v-on:click="create">create</button>
-        <button v-on:click="update">update</button>
-        <button v-on:click="deletes">delete</button>
-        <button v-on:click="getUser">getUser</button>
-    </div>
+      </div>
+   </div>
 
 @endsection
 

@@ -90,7 +90,7 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container_content">
 
             <div class="row">
                 <div class="col-sm-12" id="layout-app">
